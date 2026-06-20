@@ -9,6 +9,7 @@ public partial class AddCourse : System.Web.UI.Page
 {
     public string ErrorMessage { get; set; }
     private int courseID = 0;
+    
 
     protected void Page_Load(object sender, EventArgs e)
     {
