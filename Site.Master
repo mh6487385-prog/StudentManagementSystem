@@ -1,0 +1,62 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Management Portal - <%=Page.Title %></title>
+    <link href="CSS/style.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="masterForm" runat="server">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-top">
+                <div class="header-top-left">
+                    <span>Welcome to Student Management Portal</span>
+                </div>
+                <div class="header-top-right">
+                    <% if (Session["UserID"] != null) { %>
+                        <span>Logged in as: <strong><%=Session["FullName"]%></strong></span>
+                        <a href="Logout.aspx">Logout</a>
+                    <% } %>
+                </div>
+            </div>
+
+            <!-- Brand/Logo -->
+            <div class="brand">📚 Student Management Portal</div>
+
+            <!-- Navigation Menu -->
+            <% if (Session["UserID"] != null) { %>
+                <ul class="nav-menu">
+                    <li><a href="Default.aspx">Home</a></li>
+                    <li><a href="Dashboard.aspx">Dashboard</a></li>
+                    <li><a href="Students.aspx">Students</a></li>
+                    <li><a href="Courses.aspx">Courses</a></li>
+                    <% if (Session["UserType"].ToString() == "Student") { %>
+                        <li><a href="MyEnrollments.aspx">My Courses</a></li>
+                    <% } %>
+                    <% if (Session["UserType"].ToString() == "Admin") { %>
+                        <li><a href="ManageUsers.aspx">Manage Users</a></li>
+                    <% } %>
+                </ul>
+            <% } %>
+        </div>
+
+        <!-- Main Content -->
+        <div class="container">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2026 Student Management Portal - University System</p>
+            <p>All rights reserved. Version 1.0</p>
+        </div>
+    </form>
+</body>
+</html>

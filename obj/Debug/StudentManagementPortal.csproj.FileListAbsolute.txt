@@ -1,0 +1,2 @@
+C:\StudentManagementPortal\obj\Debug\StudentManagementPortal.csproj.AssemblyReference.cache
+C:\StudentManagementPortal\obj\Debug\StudentManagementPortal.csproj.CoreCompileInputs.cache
